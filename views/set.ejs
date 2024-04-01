@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Lego Collection</title>
+</head>
+
+<body>
+    <!-- Include navbar -->
+    <%- include('./partials/navbar', {page: '/about' }) %>
+
+    <div class="container mx-auto p-4">
+        <!-- Set details header -->
+        <div class="hero bg-yellow-200 rounded-lg p-6">
+            <div class="hero-content text-center">
+                <div class="max-w-md text-yellow-900">
+                    <h1 class="text-5xl font-bold"><%= set.name %></h1>
+                    <p class="py-6">Below, you will find detailed information about the set: <%= set.name %></p>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <!-- Set details content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <img class="w-full max-w-full rounded-lg h-full" src="<%= set.img_url %>" alt="Lego Set Image">
+            </div>
+            <div class="prose text-lg">
+                <p>
+                    <span class="font-bold">Set Name: </span> <%= set.name %> <br>
+                    <span class="font-bold">Year Released: </span> <%= set.year %> <br>
+                    <span class="font-bold">Theme: </span> <%= set.theme %> <br>
+                    <span class="font-bold">Number of Parts: </span> <%= set.num_parts %> <br><br></p>
+                <p class="text-xl">"<span id="quote"></span>"</p>
+                <p class="text-sm italic">- <span id="author"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fetch and display quote -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://quotable.io/random")
+                .then(response => response.json())
+                .then(data => {
+                    const quoteElement = document.getElementById("quote");
+                    const authorElement = document.getElementById("author");
+
+                    quoteElement.textContent = data.content;
+                    authorElement.textContent = data.author;
+                })
+                .catch(error => console.error("Error fetching quote:", error));
+        });
+    </script>
+</body>
+
+</html>

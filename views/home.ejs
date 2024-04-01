@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Lego Collection</title>
+</head>
+
+<body class="bg-gray-50">
+        <%- include('./partials/navbar', {page: '/about' }) %>
+
+        <div class="container mx-auto">
+            <div class="hero bg-yellow-200 rounded-lg p-6">
+                <div class="hero-content text-center">
+                    <div class="max-w-md">
+                        <h1 class="text-5xl font-bold text-amber-900">Welcome to Lego Collection</h1>
+                        <br />
+                        <p class="py-6 text-yellow-950">Explore our collection of Lego sets!</p>
+                        <a href="/lego/sets" class="btn">View Collection</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            
+            <!-- Grid layout with one column on small screens and three columns on medium screens and above -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                <!-- First Lego set card -->
+                <div class="bg-amber-50 rounded-lg overflow-hidden shadow-md">
+                    <img class="w-full h-max object-cover object-center"
+                        src="https://cdn.rebrickable.com/media/sets/041-2.jpg" alt="Lego Set: 041-2">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2 text-amber-950">Playhouse</h2>
+                        <p class="text-gray-700 mb-2">Simple playhouse model - released in 1979.</p>
+                        <br>
+                        <a href="/lego/sets/041-2"
+                            class="block bg-blue-700 text-blue-50 text-center px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-500 hover:text-black">View
+                            Details</a>
+                    </div>
+                </div>
+
+                <!-- Second Lego set card -->
+                <div class="bg-amber-50 rounded-lg overflow-hidden shadow-md">
+                    <img class="w-full h-max object-cover object-center"
+                        src="https://cdn.rebrickable.com/media/sets/021-1.jpg" alt="Lego Set: 021-1">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2 text-amber-950">Wheel Set</h2>
+                        <p class="text-gray-700 mb-2">This set was released in America (USA/CAN) by Samsonite in
+                            1966.</p>
+                        <br>
+                        <a href="/lego/sets/021-1"
+                            class="block bg-blue-700 text-blue-50 text-center px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-500 hover:text-black">View
+                            Details</a>
+                    </div>
+                </div>
+
+
+                <!-- Third Lego set card -->
+                <div class="bg-amber-50 rounded-lg overflow-hidden shadow-md">
+                    <img class="w-full h-max object-cover object-center"
+                        src="https://cdn.rebrickable.com/media/sets/033-1.jpg" alt="Lego Set: 033-1">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2 text-amber-950">Animal Farm</h2>
+                        <p class="text-gray-700 mb-2">Simple Animal farm with a pig, two chickens, a sheep and a
+                            horse.</p>
+                        <a href="/lego/sets/033-1"
+                            class="block bg-blue-700 text-blue-50 text-center px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-500 hover:text-black">View
+                            Details</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+</body>
+
+</html>

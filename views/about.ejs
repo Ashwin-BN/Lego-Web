@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">   
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Lego Collection</title>
+</head>
+
+    <body class="bg-gray-50">
+
+        <%- include('./partials/navbar', {page: '/' }) %>
+
+        <div class="container mx-auto">
+            <!-- Main heading -->
+            <div class="hero bg-neutral-300 rounded-lg p-6">
+                <div class="hero-content text-center">
+                    <div class="max-w-md colo text-black">
+                        <h1 class="text-5xl font-bold">Hello, I'm Ashwin</h1>
+                        <br/>
+                        <p class="py-6"> Something about me! </p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            
+            <!-- Grid layout with two columns on medium screens and above -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Image -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img class="w-full h-32 md:h-full object-cover object-center"
+                        src="https://gifdb.com/images/high/one-punch-man-thinking-huh-tc539pkctbam7hkz.webp" alt="Your Image">
+                </div>
+                
+                <!-- Description -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md p-4">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2 text-black">About Me</h2>
+                        <p class="text-gray-700 mb-4">Myself Ashwin B N, student at Seneca Polytechnic.<br/>As a dedicated computer programming student, often dedicating my weekends 
+                            to grappling with challenging assignments, even though I often struggle with them. Despite my shortcomings, 
+                            I find solace and enjoyment in my hobbies, including indulging in anime and manga, capturing moments through 
+                            photography, and passionately following football, with Manchester United holding a special place in my heart 
+                            as my favorite team. However, I must confess that there are times when my mind seems to betray me, leaving me 
+                            feeling dumbfounded and frustrated when my brain fails to function as expected.
+                        </p>
+    
+                    </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>

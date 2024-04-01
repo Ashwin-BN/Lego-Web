@@ -1,0 +1,79 @@
+<div class="navbar bg-yellow-300">
+  <div class="flex-1">
+    <a class="btn btn-ghost normal-case text-xl text-yellow-950" href="/"
+      >Lego Collection</a
+    >
+  </div>
+
+  <div class="dropdown">
+    <label tabindex="0" class="btn btn-ghost sm:hidden text-yellow-950">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </label>
+    <ul
+      tabindex="0"
+      class="menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow bg-yellow-300 rounded-box w-52"
+    >
+      <li><a class="text-yellow-900 <%= (page == "/about") ? 'active' : '' %>" href="<%= page %>">
+        <% if (page == '/about') { %>
+            About
+        <% } else { %>
+            Home
+        <% } %>
+    </a></li>
+      <li>
+        <details>
+          <summary class="text-yellow-950">Theme</summary>
+          <ul class="p-2 bg-yellow-300">
+            <li><a class="text-yellow-950" href="/lego/sets?theme=technic">Technic</a></li>
+            <li>
+              <a class="text-yellow-950" href="/lego/sets?theme=classic town">Classic Town</a>
+            </li>
+            <li>
+              <a class="text-yellow-950" href="/lego/sets?theme=supplemental">Supplemental</a>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <div class="navbar-center hidden sm:flex">
+    <ul class="menu menu-horizontal text-yellow-950 px-1">
+      <li><a class="text-yellow-900 <%= (page == "/about") ? 'active' : '' %>" href="<%= page %>">
+        <% if (page == '/about') { %>
+            About
+        <% } else { %>
+            Home
+        <% } %>
+    </a></li>
+      <li>
+        <details>
+          <summary class="text-yellow-950">Theme</summary>
+          <ul class="p-2 bg-yellow-300 right-0">
+            <li><a  href="/lego/sets?theme=technic">Technic</a></li>
+            <li>
+              <a  href="/lego/sets?theme=classic town">Classic Town</a>
+            </li>
+            <li>
+              <a  href="/lego/sets?theme=supplemental">Supplemental</a>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+<br/>

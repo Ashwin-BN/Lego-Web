@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <title>Lego Collection</title>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Include the navbar partial -->
+    <%- include('./partials/navbar', {page: '/about' }) %>
+
+    <div class="rounded-lg container mx-auto">
+      <div class="rounded-lg hero min-h-screen" style="background-image: url(https://www.boredpanda.com/blog/wp-content/uuuploads/lego-movie-scenes/lego-movie-scenes-shining.jpg);">
+        <div class="rounded-lg hero-overlay bg-neutral-950 bg-opacity-75"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Error 404</h1>
+            <p class="mb-5 text-xl">Hello, Danny... </p>
+            <p class="mb-5 text-xl">
+                <%= message %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+
+</html>

@@ -1,6 +1,6 @@
 /********************************************************************************
 
-* WEB322 – Assignment 03
+* WEB322 – Assignment 04
 
 * 
 
@@ -34,17 +34,20 @@ const app = express();
 // Serving static files from the 'public' directory
 app.use(express.static("public"));
 
+// Setting the view engine to EJS
+app.set("view engine", "ejs");
+
 // Setting the HTTP port
 const HTTP_PORT = process.env.PORT || 8080;
 
 // Route for the root URL
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/home.html'));
+  res.render("home");
 });
 
 // Route for the '/about' URL
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/about.html'));
+  res.render("about");
 });
 
 // Route for retrieving Lego sets
@@ -61,10 +64,16 @@ app.get("/lego/sets", async (req, res) => {
       legoSets = await legoData.getAllSets();
     }
 
-    res.send(legoSets);
+    res.render('sets', {sets: legoSets})
   } catch (error) {
-    // Handle errors 
-    res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+    // Handle errors and render the '404' view with appropriate message
+    if (theme) {
+      res
+        .status(404)
+        .render("404", { message: "No Sets of Matching Theme Found!" });
+    } else {
+      res.status(404).render("404", { message: "No Sets Found!" });
+    }
   }
 });
 
@@ -72,17 +81,19 @@ app.get("/lego/sets", async (req, res) => {
 app.get("/lego/sets/:set_num", async (req, res) => {
   console.log("/lego/sets/:set_num");
   try {
-    const setNum = req.params.set_num;
-    const legoSet = await legoData.getSetByNum(setNum);
+    const setNo = req.params.set_num;
+    const legoSets = await legoData.getSetByNum(setNo);
     
-    if (legoSet) {
-      res.send(legoSet)
-  } else {
-      res.sendFile(path.join(__dirname, '/views/404.html'));
+    if (legoSets) {
+      res.render("set", {set: legoSets})
+    } else {
+      res.status(404).render("404", {message: "No Sets of Matching Set Number Found!"});
+    }
+  } catch (error) {
+    res
+      .status(404)
+      .render("404", { message: "No Sets of Matching Set Number Found!" });
   }
-} catch (error) {
-  res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
-}
 });
 
 // Initializing the Lego data module and starting the server
@@ -94,5 +105,5 @@ legoData.initialize().then(() => {
 
 // Middleware to handle 404 errors for all other routes
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+  res.status(404).render("404", { message: "Route Not Exist!" });
 });
