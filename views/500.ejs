@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <title>500 Server Error - Lego Collection</title>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Include the navbar partial -->
+    <%- include('./partials/navbar', {page: '/500' }) %>
+
+    <div class="rounded-lg container mx-auto">
+      <div class="rounded-lg hero min-h-screen" style="background-image: url(https://i0.wp.com/makezine.com/wp-content/uploads/2011/06/brokenbrick.png?fit=600%2C427&ssl=1);">
+        <div class="rounded-lg hero-overlay bg-neutral-950 bg-opacity-75"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Error 500</h1>
+            <p class="mb-5 text-xl">Not you, it's on us :) </p>
+            <p class="mb-5 text-xl">
+                <%= message %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+
+</html>
