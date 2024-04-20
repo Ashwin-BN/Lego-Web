@@ -34,6 +34,8 @@ const legoSets = require("./modules/legoSets");
 // Load environment variables from .env file
 dotenv.config();
 
+const mongoose = require('mongoose')
+
 // Create an instance of Express
 const app = express();
 
@@ -48,6 +50,15 @@ const HTTP_PORT = process.env.PORT || 8080;
 
 // Middleware to parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected Successfully);
+  } catch (error) {
+   throw error;
+  }
+}
 
 app.get('/', (req, res) => {
   res.render("home")
