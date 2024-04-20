@@ -53,7 +53,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    const conn = await mongoose.connect(process.env.DB_CONNECTION_STRING);
     console.log(`MongoDB Connected Successfully);
   } catch (error) {
    throw error;
