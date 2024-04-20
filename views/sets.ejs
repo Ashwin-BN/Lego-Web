@@ -34,10 +34,9 @@
             </div>
           </td>
           <td>
-            <%= set.name %> | <a href="/lego/sets?theme=<%= set.Theme.name %>" class="btn btn-xs btn-primary">
-              <%= set.Theme.name %>
-            </a>
-          </td>
+            <%= set.name %> | <a href="/lego/sets?theme=<%= set.theme %>" class="btn  mt-2 btn-xs"><%= set.theme_id %></a>
+        </td>
+        
           <td>
             <span class="font-bold">Year: </span>
             <%= set.year %><br>

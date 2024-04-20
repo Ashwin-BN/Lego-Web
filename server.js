@@ -1,6 +1,6 @@
 /********************************************************************************
 
-* WEB322 – Assignment 05
+* WEB322 – Assignment 06
 
 * 
 
@@ -14,11 +14,11 @@
 
 * 
 
-* Name: Ashwin B N      Student ID: 112763222        Date: 12-04-2024
+* Name: Ashwin B N      Student ID: 112763222        Date: 19-04-2024
 
 *
 
-* Published URL: https://worrisome-lamb-suspenders.cyclic.app
+* Published URL: https://lovely-boa-knickers.cyclic.app
 
 *
 
@@ -26,9 +26,7 @@
 
 // Importing required modules
 const express = require("express");
-const path = require("path");
 const dotenv = require("dotenv");
-const { Sequelize, DataTypes } = require("sequelize");
 
 // Importing Sequelize models
 const legoSets = require("./modules/legoSets");
@@ -51,88 +49,85 @@ const HTTP_PORT = process.env.PORT || 8080;
 // Middleware to parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
 
-// Route for the root URL
-app.get("/", (req, res) => {
-  res.render("home");
+app.get('/', (req, res) => {
+  res.render("home")
 });
 
-// Route for the '/about' URL
-app.get("/about", (req, res) => {
+app.get('/about', (req, res) => {
   res.render("about");
 });
 
-// Route for adding a new Lego set form
 app.get("/lego/addSet", async (req, res) => {
-  try {
-    const themes = await legoSets.getAllThemes();
-    res.render("addSet", { themes });
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
-  }
+  let themes = await legoSets.getAllThemes()
+  res.render("addSet", { themes: themes })
 });
 
-// Route for handling the submission of the new Lego set form
 app.post("/lego/addSet", async (req, res) => {
   try {
     await legoSets.addSet(req.body);
     res.redirect("/lego/sets");
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
+  } catch (err) {
+    res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
   }
+
 });
 
-// Route for editing an existing Lego set form
 app.get("/lego/editSet/:num", async (req, res) => {
+
   try {
-    const set = await legoSets.getSetByNum(req.params.num);
-    const themes = await legoSets.getAllThemes();
+    let set = await legoSets.getSetByNum(req.params.num);
+    let themes = await legoSets.getAllThemes();
+
     res.render("editSet", { set, themes });
-  } catch (error) {
-    res.status(404).render("404", { message: error.message });
+  } catch (err) {
+    res.status(404).render("404", { message: err });
   }
+
 });
 
-// Route for handling the submission of the edited Lego set form
 app.post("/lego/editSet", async (req, res) => {
+
   try {
     await legoSets.editSet(req.body.set_num, req.body);
     res.redirect("/lego/sets");
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
+  } catch (err) {
+    res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
   }
 });
 
-// Route for deleting an existing Lego set
 app.get("/lego/deleteSet/:num", async (req, res) => {
   try {
     await legoSets.deleteSet(req.params.num);
     res.redirect("/lego/sets");
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
+  } catch (err) {
+    res.status(500).render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
   }
-});
+})
 
-// Route for retrieving Lego sets
 app.get("/lego/sets", async (req, res) => {
+
+  let sets = [];
+
   try {
-    const sets = await legoSets.getAllSets();
-    res.render("sets", { sets });
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
+    if (req.query.theme) {
+      sets = await legoSets.getSetsByTheme(req.query.theme);
+    } else {
+      sets = await legoSets.getAllSets();
+    }
+
+    res.render("sets", { sets })
+  } catch (err) {
+    res.status(404).render("404", { message: err });
   }
+
 });
 
-// Route for retrieving a specific Lego set by set number
-app.get("/lego/sets/:set_num", async (req, res) => {
+app.get("/lego/sets/:num", async (req, res) => {
   try {
-    const set = await legoSets.getSetByNum(req.params.set_num);
-    if (set) {
-      res.render("set", { set });
-    } else {
-      res.status(404).render("404", { message: "No Sets of Matching Set Number Found!" });
-    }
-  } catch (error) {
-    res.status(500).render("500", { message: error.message });
+    let set = await legoSets.getSetByNum(req.params.num);
+    res.render("set", { set })
+  } catch (err) {
+    res.status(404).render("404", { message: err });
   }
 });
 
