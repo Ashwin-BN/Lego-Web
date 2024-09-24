@@ -1,6 +1,3 @@
-Here's the complete GitHub README file code for your LEGO Collection project, formatted in Markdown:
-
-```markdown
 # LEGO Collection
 
 ## Description
@@ -78,11 +75,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 Special thanks to the contributors and libraries that made this project possible.
-```
-
-### Instructions
-- Replace `<repository-url>` with the actual URL of your GitHub repository.
-- If you have a license file, ensure the path to the license is correct in the "License" section.
-- Feel free to customize any part of the README to better fit your project's specifics or your personal style.
-
 Let me know if you need any further adjustments or additional sections!
