@@ -1,10 +1,7 @@
-Here's the complete GitHub README file code for your LEGO Collection project, formatted in Markdown:
-
-```markdown
 # LEGO Collection
 
 ## Description
-LEGO Collection is a web application designed to manage LEGO sets using Node.js and Express.js. This application allows users to perform CRUD (Create, Read, Update, Delete) operations on LEGO sets, providing a seamless experience with dynamic HTML rendering, responsive forms, and a robust PostgreSQL database integration through Sequelize ORM.
+LEGO Collection is a web application designed to manage LEGO sets using Node.js and Express.js. This application allows users to perform CRUD (Create, Read, Update, Delete) operations on LEGO sets, providing a seamless experience with dynamic HTML rendering, responsive forms, and robust MongoDB integration.
 
 ## Technologies Used and Features
 
@@ -18,8 +15,8 @@ LEGO Collection is a web application designed to manage LEGO sets using Node.js 
 - **Express.js**: A lightweight framework for handling routing and middleware.
 
 ### Database
-- **PostgreSQL**: A robust, open-source relational database for storing and managing data.
-- **Sequelize ORM**: A promise-based Node.js ORM for managing database operations with PostgreSQL.
+- **MongoDB**: A NoSQL database for storing and managing data.
+- **Mongoose**: An ODM (Object Data Modeling) library for MongoDB and Node.js, simplifying the interaction with the database.
 
 ## Key Features
 - **CRUD Operations**: 
@@ -45,23 +42,24 @@ The application is published and hosted on [Cyclic](https://cyclic.sh/).
 The application requires a `.env` file for environment variables, which is not included in the repository. The `.env` file should contain the following:
 
 ```
-DATABASE_URL=your_postgresql_connection_string
+DB_CONNECTION_STRING=your_mongodb_connection_string
 ```
 
-Make sure to replace `your_postgresql_connection_string` with your actual PostgreSQL connection string.
+Make sure to replace `your_mongodb_connection_string` with your actual MongoDB connection string.
 
 ## Getting Started
 To run the application locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Ashwin-BN/Lego-Web.git
    cd Lego-Web
    ```
 
 2. Install dependencies:
+   Go through `package.json` for all dependencies:
    ```bash
-   npm install
+   npm install ...
    ```
 
 3. Create a `.env` file in the root directory and add your environment variables as described above.
@@ -78,11 +76,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 Special thanks to the contributors and libraries that made this project possible.
-```
-
-### Instructions
-- Replace `<repository-url>` with the actual URL of your GitHub repository.
-- If you have a license file, ensure the path to the license is correct in the "License" section.
-- Feel free to customize any part of the README to better fit your project's specifics or your personal style.
-
-Let me know if you need any further adjustments or additional sections!
