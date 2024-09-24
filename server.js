@@ -49,7 +49,6 @@ const HTTP_PORT = process.env.PORT || 8080;
 // Middleware to parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
 // Setting up client-sessions middleware for user authentication
 app.use(clientSessions({
     cookieName: "session",
@@ -62,19 +61,11 @@ app.use(clientSessions({
 app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
-=======
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.DB_CONNECTION_STRING);
-    console.log(`MongoDB Connected Successfully`);
-  } catch (error) {
-   throw error;
-  }
-}
+});
+   
 
 app.get('/', (req, res) => {
   res.render("home")
->>>>>>> 359e5d9e6ea758e60ff3e13b061b5e50aea6649b
 });
 
 // Middleware to ensure users are logged in before accessing certain routes
